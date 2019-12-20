@@ -1,0 +1,5 @@
+usr juanito
+eltodasmias-16
+
+
+mongodb+srv://juanito:eltodasmias-16@cluster0-3lxr1.mongodb.net/cafe

@@ -1,66 +1,36 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
 require('../config/config');
+
 const app = express();
 
 
 
-
-app.use(bodyParser.urlencoded({ extended: false }))
- 
 // parse application/json
 app.use(bodyParser.json());
 
-
-// Peticones GET
-
-app.get('/usuario', (req, res)=> {
-
-    res.json('Get usuario');
-});
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+app.use(require('./routes/usuario'));
 
 
-// crea usuarios nuevos o nueva data
-app.post( '/usuario', (req, res )=> {
+// conexion  a mongoDB
 
-    let body = req.body;
+mongoose.connect( process.env.URLDB ,  { useNewUrlParser: true, useCreateIndex: true } )
+.then ( ( resp) => {
+    // console.log(resp);
+    console.log('DB online');
+ })
 
-
-    if(body.nombre === undefined ){
-
-        res.status(400).json({
-            ok:false,
-            message: 'El nombre es necesario'
-        });
-
-    }else{
-
-        
-    res.json({
-        body
-    });
-    }
-
-
-});
-
-
-// put actualiza los registros
-
-
-app.put( '/usuario/:id', (req, res) => {
-
-    let id = req.params.id;
-
-    res.json({
-        id
-    });
-});
-
-
-app.delete('/usuario', (req, res) => {
-    res.json('DELETE usuario');
-});
+ .catch( err  => {
+    console.log(err);
+ });
+// ,(err, resp) => {
+//     if(err) throw err;
+//     console.log(resp);
+// }
 
 
 app.listen( process.env.PORT , ()=> {
