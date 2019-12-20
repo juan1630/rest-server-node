@@ -20,21 +20,30 @@
 - Mongo Atlas
 - Entorno de producciòn de la DB
 
-### Comandos 
+
+### Dependencias que se usuaron
+
+#### bode-parser
 
 ``` 
 npm i body-parser --save
 ```
 
+#### mongoose-unique-validator 
+
 ```
 npm i mongoose-unique-validator
 ```
 
-- En esta depencia dio problemas y se descargo la que se muestra
+#### bcrypt
+
+- En esta dependencia dio problemas y se descargo la que se muestra
 
 ``` 
 npm install bcryptjs
 ```
+
+#### mongoose 
 
 ``` 
 npm i mongoose --save
