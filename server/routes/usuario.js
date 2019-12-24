@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt =  require('bcryptjs');
 const  _ = require('underscore');
 const Usuario = require('../models/usuario');
+const {verificaToken, verificaAdminRole} = require('../../config/middleware/autenticazion');
 
 const app = express();
 
@@ -9,7 +10,18 @@ const app = express();
 
 // Peticones GET
 
-app.get('/usuario', (req, res)=> {
+app.get('/usuario', verificaToken  ,(req, res)=> {
+
+
+    // return res.json({
+    //     usuario : req.usuario,
+    //     nombre: req.nombre,
+    //     emial: req.email
+
+    // });
+
+    // podemos extraer las propiedades de forma independiente 
+
 
     let desde = req.query.desde || 0;
     let limite = req.query.limite || 5;
@@ -61,7 +73,7 @@ app.get('/usuario', (req, res)=> {
 
 
 // crea usuarios nuevos o nueva data
-app.post( '/usuario', (req, res )=> {
+app.post( '/usuario', [verificaToken, verificaAdminRole] , (req, res )=> {
 
     
     let body = req.body;
@@ -98,7 +110,7 @@ app.post( '/usuario', (req, res )=> {
 // put actualiza los registros
 
 
-app.put( '/usuario/:id', (req, res) => {
+app.put( '/usuario/:id', [verificaToken, verificaAdminRole] ,(req, res) => {
 
     // obtenemos el id desde la uri
     let id = req.params.id;
@@ -127,7 +139,7 @@ app.put( '/usuario/:id', (req, res) => {
 });
 
 
-app.delete('/usuario/:id', (req, res) => {
+app.delete('/usuario/:id', verificaToken ,(req, res) => {
 
     let id = req.params.id;
 

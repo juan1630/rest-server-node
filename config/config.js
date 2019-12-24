@@ -27,5 +27,23 @@ let urlDB;
 // }
 
 
+//=================================
+//     Vencimineto del token
+//=================================
+
+// 60 * 60 * 24 * 30
+
+
+process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30 
+
+
+//=================================
+//      SEED de autenticacion
+//=================================
+
+
+process.env.SEED = process.env.SEED ||'este-es-el-seed-de-desarrollo';
+
+
 process.env.URLDB = urlDB;
 

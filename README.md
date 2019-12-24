@@ -1,7 +1,6 @@
 # Creacion de un server rest
 ## REST api
 
-
 ### Temas de la seccion
 
 
