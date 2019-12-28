@@ -3,3 +3,26 @@ eltodasmias-16
 
 
 mongodb+srv://juanito:eltodasmias-16@cluster0-3lxr1.mongodb.net/cafe
+
+
+
+
+// Google
+
+293146874790-bi6m1ump73k6sdlreho3ofi4cdhuuure.apps.googleusercontent.com
+
+
+client secret
+
+C8qJ75kPD2wM1Of0xR8Wcqx0
+
+cliente id
+
+293146874790-7jdm2115ctvnf5576jaob3ebeu1dneqh.apps.googleusercontent.com
+
+
+
+
+secret 
+
+Dclbx-Z9sdCeUt3xqXcR7Ys_

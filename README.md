@@ -22,7 +22,7 @@
 
 ### Dependencias que se usuaron
 
-#### bode-parser
+#### body-parser
 
 ``` 
 npm i body-parser --save
@@ -46,4 +46,10 @@ npm install bcryptjs
 
 ``` 
 npm i mongoose --save
+```
+
+### JWT
+
+```
+npm isntall --save jsonwebtoken
 ```
