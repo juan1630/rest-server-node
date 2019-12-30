@@ -90,106 +90,106 @@ async function verify( token ) {
   }
 
 
-app.post('/google', async (req, resp ) => {
+// app.post('/google', async (req, resp ) => {
     
         
-    let token = req.body.idtoken;
+//     let token = req.body.idtoken;
  
-    let userGoogle  = await verify(token)
+//     let userGoogle  = await verify(token)
             
-    .catch( e => {
+//     .catch( e => {
                                 
-            return resp.status(400).json({
-                ok: false,
-                err: e
-            });
+//             return resp.status(400).json({
+//                 ok: false,
+//                 err: e
+//             });
 
 
-            });
+//             });
          
-       Usuario.findOne({email: userGoogle.email}, ( err, userDB )=> {
+//        Usuario.findOne({email: userGoogle.email}, ( err, userDB )=> {
 
         
-        if(err) {
+//         if(err) {
 
-            return resp.status(500).json({
-                ok: false,
-                err
-            });
+//             return resp.status(500).json({
+//                 ok: false,
+//                 err
+//             });
 
-        }
+//         }
 
-            if( userDB ){
+//             if( userDB ){
 
-                if( userDB === false ){
-                    return resp.status(400).json({
-                        ok: false,
-                        err :{
-                            message: 'Se debe de autenticar con login normal'
-                        }
-                    });
+//                 if( userDB === false ){
+//                     return resp.status(400).json({
+//                         ok: false,
+//                         err :{
+//                             message: 'Se debe de autenticar con login normal'
+//                         }
+//                     });
     
-                }else {
+//                 }else {
     
-                    // renovamos el token
+//                     // renovamos el token
     
-                    let token = jwt.sign({
-                        usuario: userDB
-                    }, process.env.SEED, { expiresIn: process.env.CADUCIDAD_TOKEN } )
+//                     let token = jwt.sign({
+//                         usuario: userDB
+//                     }, process.env.SEED, { expiresIn: process.env.CADUCIDAD_TOKEN } )
     
     
-                    return resp.json({
-                        ok: true,
-                        usuario: userDB,
-                        token
-                    });
+//                     return resp.json({
+//                         ok: true,
+//                         usuario: userDB,
+//                         token
+//                     });
     
-                }
+//                 }
 
-            } else {
+//             } else {
 
-                // si el usuario no existe en la DB
+//                 // si el usuario no existe en la DB
 
-                let usuario = new Usuario();
+//                 let usuario = new Usuario();
                 
-                usuario.nombre = userGoogle.nombre;
-                usuario.emial = userGoogle.email;
-                usuario.img = userGoogle.picture;
-                usuario.google = true;
-                usuario.password = ':)';
+//                 usuario.nombre = userGoogle.nombre;
+//                 usuario.emial = userGoogle.email;
+//                 usuario.img = userGoogle.picture;
+//                 usuario.google = true;
+//                 usuario.password = ':)';
 
-                 usuario.save( (err, usuarioDB) => {
+//                  usuario.save( (err, usuarioDB) => {
 
                      
-                if(err) {
+//                 if(err) {
 
-                    return resp.status(500).json({
-                        ok: false,
-                        err: err
-                    });
+//                     return resp.status(500).json({
+//                         ok: false,
+//                         err: err
+//                     });
 
-                 }
+//                  }
 
-                 let token = jwt.sign({
-                    usuario: userDB
-                }, process.env.SEED, { expiresIn: process.env.CADUCIDAD_TOKEN } );
+//                  let token = jwt.sign({
+//                     usuario: userDB
+//                 }, process.env.SEED, { expiresIn: process.env.CADUCIDAD_TOKEN } );
 
-                console.log('usuario guardado')
+//                 console.log('usuario guardado')
                 
-                return resp.json({
-                    ok: true,
-                    usuario: usuarioDB,
-                    token
-                })
+//                 return resp.json({
+//                     ok: true,
+//                     usuario: usuarioDB,
+//                     token
+//                 })
 
-                 });
+//                  });
                 
-            }
+//             }
 
 
-       } );
+//        } );
 
-});
+// });
 
 
 module.exports = app;
