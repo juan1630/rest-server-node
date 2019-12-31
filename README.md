@@ -18,6 +18,10 @@
 - Mlab
 - Mongo Atlas
 - Entorno de producciòn de la DB
+- Subida de archivos al servidor
+- Evio del token por parametro de la url
+- Valiadcion de archivos
+
 
 
 ### Dependencias que se usuaron
@@ -53,3 +57,9 @@ npm i mongoose --save
 ```
 npm isntall --save jsonwebtoken
 ```
+
+### express-fileupload
+``` 
+npm install --save express-fileupload
+```
+- Se uso para la subida de las imagenes 
